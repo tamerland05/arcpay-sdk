@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { OrderIn, OrderOut, RegisterOut } from '../types/order';
 // import ArcpayStatus from '../types/arcpay';
 import {
@@ -7,6 +7,7 @@ import {
   useTonConnectUI,
 } from '@tonconnect/ui-react';
 import ArcpayStatus from '../types/arcpay';
+import { ArcPayContext } from '../providers/ArcPayProvider';
 
 const ARCPAY_URL =
   import.meta.env.VITE_ARCPAY_API_URL || 'https://arcpay.online/api/v1/arcpay';
@@ -38,6 +39,7 @@ const fetchArcpay = async (
 };
 
 export function useArcPay() {
+  const context = useContext(ArcPayContext);
   const userFriendlyAddress = useTonAddress();
   const [tonConnectUI] = useTonConnectUI();
   const { open } = useTonConnectModal();
@@ -129,5 +131,6 @@ export function useArcPay() {
       }
       tonConnectUI.disconnect();
     },
+    onOrderChange: context?.onOrderChange,
   };
 }

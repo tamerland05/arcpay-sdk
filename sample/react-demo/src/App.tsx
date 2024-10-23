@@ -4,11 +4,18 @@ import viteLogo from '/vite.svg';
 import './App.css';
 
 import { ArcPayProvider, useArcPay } from '@arcpay/react-sdk';
+import { OrderOut } from '@arcpay/react-sdk/dist/types/order';
 
 function App() {
   const [count, setCount] = useState(0);
 
   const arcPay = useArcPay();
+
+  const onOrderChange = (order: OrderOut) => {
+    console.log('Order updated:', order);
+  };
+
+  arcPay.onOrderChange(onOrderChange, 'kyyug');
 
   return (
     <>
