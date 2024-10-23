@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",                  // Целевой стандарт JavaScript
+    "module": "ESNext",                  // Модульная система
+    "moduleResolution": "Node",          // Резолвинг модулей
+    "jsx": "react",                      // Поддержка JSX
+    "esModuleInterop": true,             // Совместимость с модулями CommonJS
+    "skipLibCheck": true,                // Пропуск проверки библиотек
+    "strict": true,                      // Строгие проверки
+    "declaration": true,                 // Генерация .d.ts файлов
+    "declarationDir": "./dist",          // Папка для .d.ts файлов
+    "outDir": "./dist",                  // Папка для собранных файлов
+    "sourceMap": true                    // Генерация sourcemap'ов
+  },
+  "include": ["src"],                    // Включаемая папка с исходниками
+  "exclude": ["node_modules", "dist"]    // Исключаемые папки
+}
