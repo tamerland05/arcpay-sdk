@@ -2,23 +2,24 @@
   "name": "@arcpay/react-sdk",
   "version": "1.0.0",
   "description": "ArcPay React SDK with a hook and provider for payment processing.",
-  "main": "dist/index.js",
+  "main": "dist/arcpay-sdk.umd.js",
   "module": "dist/arcpay-sdk.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && tsc --emitDeclarationOnly",
-    "serve": "vite preview"
+    "build": "vite build && tsc"
   },
   "peerDependencies": {
+    "@telegram-apps/sdk-react": "^2.0.8",
     "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0",
-    "@telegram-apps/sdk-react": "^2.0.8"
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^4.3.2",
+    "path-browserify": "^1.0.1",
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "tslib": "^2.0.0",
     "typescript": "^4.0.0",
     "vite": "^4.0.0"
   },

@@ -4,7 +4,7 @@ import React, { createContext, ReactNode, useState } from 'react';
 // Define the context value type
 interface ArcPayContextType {
   processPayment: (amount: number) => Promise<void>;
-  baseUrl: string;
+  apiBaseUrl: string;
 }
 
 // Create the context
@@ -38,7 +38,8 @@ export const ArcPayProvider = ({
 
   return (
     <TonConnectUIProvider manifestUrl="https://arcpay.online/tonconnect-manifest.json">
-      <ArcPayContext.Provider value={{ processPayment }}>
+      <ArcPayContext.Provider
+        value={{ processPayment, apiBaseUrl: apiBaseUrl || '' }}>
         {children}
       </ArcPayContext.Provider>
     </TonConnectUIProvider>

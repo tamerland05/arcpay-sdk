@@ -1,7 +1,16 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" }
-    // { "path": "./tsconfig.node.json" }
-  ]
+  "compilerOptions": {
+    "target": "ESNext",                  // Целевая версия JavaScript
+    "module": "ESNext",                  // Модульная система
+    "declaration": true,                 // Генерация файлов .d.ts
+    "declarationDir": "./dist",          // Куда будут сохраняться файлы .d.ts
+    "outDir": "./dist",                  // Папка для собранных .js файлов
+    "strict": true,                      // Строгие проверки типов
+    "jsx": "react",                      // Поддержка JSX
+    "esModuleInterop": true,             // Совместимость с CommonJS
+    "moduleResolution": "node",          // Разрешение модулей как в Node.js
+    "skipLibCheck": true                 // Пропуск проверки библиотек
+  },
+  "include": ["src"],                    // Папка с исходниками
+  "exclude": ["node_modules", "dist"]    // Исключение ненужных папок
 }
