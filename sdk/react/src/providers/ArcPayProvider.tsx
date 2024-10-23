@@ -1,9 +1,7 @@
-import { TonConnectUIProvider } from '@tonconnect/ui-react';
-import React, { createContext, ReactNode, useState } from 'react';
-import { OrderOut } from '../types/order';
-import ArcpayStatus from '../types/arcpay';
-
-type OrderChangeCallback = (order: OrderOut) => void;
+import { TonConnectUIProvider } from "@tonconnect/ui-react";
+import React, { createContext, ReactNode, useState } from "react";
+import ArcpayStatus from "../types/arcpay";
+import { OrderChangeCallback } from "../types/order";
 
 interface OrderChangeInterface {
   callback: OrderChangeCallback;
@@ -29,7 +27,7 @@ type ArcPayProviderProps = {
 
 // ArcPayProvider component
 export const ArcPayProvider = ({ children, baseUrl }: ArcPayProviderProps) => {
-  const [orderCallbacks, setOrderCallbacks] = useState<OrderChangeInterface[]>(
+  const [orderCallbacks, setOrderCallbacks] = useState<OrderChangeInterface>(
     []
   );
 
@@ -38,16 +36,13 @@ export const ArcPayProvider = ({ children, baseUrl }: ArcPayProviderProps) => {
   );
 
   const onOrderChange = (callback: OrderChangeCallback, orderId: string) => {
-    setOrderCallbacks((prevCallbacks) => [
-      ...prevCallbacks,
-      {
-        callback: callback,
-        orderId: orderId,
-      },
-    ]);
+    setOrderCallbacks({
+      callback: callback,
+      orderId: orderId,
+    });
   };
   const [apiBaseUrl, setApiBaseUrl] = useState(
-    baseUrl || 'https://arcpay.online/api/v1/arcpay'
+    baseUrl || "https://arcpay.online/api/v1/arcpay"
   );
 
   return (
@@ -57,7 +52,8 @@ export const ArcPayProvider = ({ children, baseUrl }: ArcPayProviderProps) => {
           status: arcPayStatus,
           apiBaseUrl: apiBaseUrl,
           onOrderChange: onOrderChange,
-        }}>
+        }}
+      >
         {children}
       </ArcPayContext.Provider>
     </TonConnectUIProvider>

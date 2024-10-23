@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
 
-import { ArcPayProvider, useArcPay } from '@arcpay/react-sdk';
-import { OrderOut } from '@arcpay/react-sdk/dist/types/order';
+import { useArcPay } from "@arcpay/react-sdk";
+import { OrderOut } from "@arcpay/react-sdk/dist/types/order";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,10 +12,10 @@ function App() {
   const arcPay = useArcPay();
 
   const onOrderChange = (order: OrderOut) => {
-    console.log('Order updated:', order);
+    console.log("Order updated:", order);
   };
 
-  arcPay.onOrderChange(onOrderChange, 'kyyug');
+  arcPay.onOrderChange?(onOrderChange, "kyyug");
 
   return (
     <>

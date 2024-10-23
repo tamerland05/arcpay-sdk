@@ -5,25 +5,25 @@
  */
 export enum OrderStatus {
   /** The order has been created but not processed yet */
-  created = 'created',
+  created = "created",
 
   /** The order is pending for further action */
-  pending = 'pending',
+  pending = "pending",
 
   /** The order is being processed */
-  processing = 'processing',
+  processing = "processing",
 
   /** The order has been received by the customer */
-  received = 'received',
+  received = "received",
 
   /** The order has been captured (i.e., the payment has been finalized) */
-  captured = 'captured',
+  captured = "captured",
 
   /** The order has failed (i.e., payment or processing error) */
-  failed = 'failed',
+  failed = "failed",
 
   /** The order has been canceled */
-  canceled = 'canceled',
+  canceled = "canceled",
 }
 
 /**
@@ -156,3 +156,5 @@ export interface RegisterOut {
   /** The details of the merchant associated with the order */
   merchant: MerchantOut;
 }
+
+export type OrderChangeCallback = (order: OrderOut) => void;

@@ -1,6 +1,6 @@
 enum ArcpayStatus {
-  disconnected = 'disconnected',
-  connected = 'connected',
+  disconnected = "disconnected",
+  connected = "connected",
 }
 
 export default ArcpayStatus;
