@@ -1,4 +1,4 @@
-import { OrderOut, OrderStatus } from '@arcpay/react-sdk';
+import { OrderOut, OrderStatus } from '@arcpay/react-sdk/dist/types/order';
 import React from 'react';
 
 interface OrderViewProps {

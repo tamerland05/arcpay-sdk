@@ -1,6 +1,7 @@
+import { OrderOut } from '@arcpay/react-sdk/dist/types/order';
 import OrderView from './OrderView';
 import { useEffect, useState } from 'react';
-import { OrderOut, useArcPay } from '@arcpay/react-sdk';
+import { useArcPay } from '@arcpay/react-sdk';
 import ArcpayStatus from '@arcpay/react-sdk/dist/types/arcpay';
 
 type Props = {
