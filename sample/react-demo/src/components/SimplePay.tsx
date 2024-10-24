@@ -1,4 +1,3 @@
-import { OrderOut } from '@arcpay/react-sdk/dist/types/order';
 import OrderView from './OrderView';
 import { useEffect, useState } from 'react';
 import { useArcPay } from '@arcpay/react-sdk';

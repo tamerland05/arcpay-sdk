@@ -1,8 +1,8 @@
-import { OrderOut } from '@arcpay/react-sdk/dist/types/order';
 import { useState } from 'react';
 import { api } from '../api';
 import SimplePay from './SimplePay';
 import IntegratedPay from './IntegratedPay';
+import { OrderOut } from '@arcpay/react-sdk';
 
 enum PaymentMode {
   simple = 'simple',

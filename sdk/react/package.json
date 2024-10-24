@@ -25,5 +25,12 @@
   },
   "dependencies": {
     "@tonconnect/ui-react": "^2.0.9"
+  },
+    "keywords": ["processing", "ton", "arcpay", "architecton"],
+  "author": "Iu <uran@architecton.tech>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Architec-Ton/arcpay-sdk.git"
   }
 }
