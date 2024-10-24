@@ -11,6 +11,6 @@
     "moduleResolution": "node",          // Разрешение модулей как в Node.js
     "skipLibCheck": true                 // Пропуск проверки библиотек
   },
-  "include": ["src"],                    // Папка с исходниками
+  "include": ["src/**/*"],                    // Папка с исходниками
   "exclude": ["node_modules", "dist"]    // Исключение ненужных папок
 }

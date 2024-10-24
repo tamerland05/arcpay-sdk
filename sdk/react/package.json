@@ -6,7 +6,7 @@
   "module": "dist/arcpay-sdk.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "vite build && tsc"
+    "build": "vite build && tsc --project tsconfig.json"
   },
   "peerDependencies": {
     "@telegram-apps/sdk-react": "^2.0.8",

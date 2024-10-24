@@ -1,18 +1,18 @@
-import { TonConnectUIProvider } from "@tonconnect/ui-react";
-import React, { createContext, ReactNode, useState } from "react";
-import ArcpayStatus from "../types/arcpay";
-import { OrderChangeCallback } from "../types/order";
+import { TonConnectUIProvider } from '@tonconnect/ui-react';
+import React, { createContext, ReactNode, useState } from 'react';
+import ArcpayStatus from '../types/arcpay';
+import { OrderChangeCallback } from '../types/order';
 
 interface OrderChangeInterface {
   callback: OrderChangeCallback;
-  orderId: string;
+  uuid: string;
 }
 
 // Define the context value type
 interface ArcPayContextType {
-  apiBaseUrl: string;
   status: ArcpayStatus;
-  onOrderChange: (callback: OrderChangeCallback, orderId: string) => void;
+  orderCallback?: OrderChangeInterface;
+  onOrderChange: (uuid: string, callback: OrderChangeCallback) => void;
 }
 
 // Create the context
@@ -21,39 +21,33 @@ export const ArcPayContext = createContext<ArcPayContextType | undefined>(
 );
 
 type ArcPayProviderProps = {
-  baseUrl?: string;
   children: ReactNode;
 };
 
 // ArcPayProvider component
-export const ArcPayProvider = ({ children, baseUrl }: ArcPayProviderProps) => {
-  const [orderCallbacks, setOrderCallbacks] = useState<OrderChangeInterface>(
-    []
-  );
+export const ArcPayProvider = ({ children }: ArcPayProviderProps) => {
+  const [orderCallback, setOrderCallback] = useState<
+    OrderChangeInterface | undefined
+  >();
 
   const [arcPayStatus, setArcPayStatus] = useState<ArcpayStatus>(
     ArcpayStatus.disconnected
   );
 
-  const onOrderChange = (callback: OrderChangeCallback, orderId: string) => {
-    setOrderCallbacks({
+  const onOrderChange = (uuid: string, callback: OrderChangeCallback) => {
+    setOrderCallback({
       callback: callback,
-      orderId: orderId,
+      uuid: uuid,
     });
   };
-  const [apiBaseUrl, setApiBaseUrl] = useState(
-    baseUrl || "https://arcpay.online/api/v1/arcpay"
-  );
-
   return (
     <TonConnectUIProvider manifestUrl="https://arcpay.online/tonconnect-manifest.json">
       <ArcPayContext.Provider
         value={{
           status: arcPayStatus,
-          apiBaseUrl: apiBaseUrl,
           onOrderChange: onOrderChange,
-        }}
-      >
+          orderCallback: orderCallback,
+        }}>
         {children}
       </ArcPayContext.Provider>
     </TonConnectUIProvider>

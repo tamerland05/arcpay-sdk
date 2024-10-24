@@ -1,7 +1,10 @@
-import { OrderIn, OrderOut, RegisterOut } from "../types/order";
+import { OrderIn, OrderOut, RegisterOut } from '../types/order';
 
-const ARCPAY_URL =
-  import.meta.env.VITE_ARCPAY_API_URL || "https://arcpay.online/api/v1/arcpay";
+export const ARCPAY_URL =
+  import.meta.env.VITE_ARCPAY_API_URL || 'https://arcpay.online/api/v1/arcpay';
+
+// export const ARCPAY_URL =
+//   import.meta.env.VITE_ARCPAY_API_URL || 'http://localhost:8011/api/v1/arcpay';
 
 const fetchArcpay = async (
   url: string,
@@ -10,10 +13,10 @@ const fetchArcpay = async (
   body?: BodyInit | null
 ) => {
   const response = await fetch(`${ARCPAY_URL}${url}`, {
-    method: method || "GET",
+    method: method || 'GET',
     headers: {
       ...headers,
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: body,
   });
@@ -36,8 +39,8 @@ export const arcPayApi = {
     merchantApiKey: string
   ): Promise<OrderOut> =>
     fetchArcpay(
-      "/order",
-      "POST",
+      '/order',
+      'POST',
       {
         ArcKey: merchantApiKey,
       },
@@ -50,7 +53,7 @@ export const arcPayApi = {
   ): Promise<RegisterOut> =>
     fetchArcpay(
       `/order/${uuid}/register`,
-      "POST",
+      'POST',
       {},
       JSON.stringify({
         initData: initData,
@@ -60,7 +63,7 @@ export const arcPayApi = {
   checkout: (uuid: string, customerWalletAddress?: string) =>
     fetchArcpay(
       `/order/${uuid}/checkout`,
-      "POST",
+      'POST',
       {},
       JSON.stringify({
         customerWalletAddress: customerWalletAddress,
@@ -69,10 +72,11 @@ export const arcPayApi = {
   confirm: (uuid: string, tonConnectResponse?: any) =>
     fetchArcpay(
       `/order/${uuid}/confirm`,
-      "POST",
+      'POST',
       {},
       JSON.stringify({
         tonConnectResponse,
       })
     ),
+  baseUrl: ARCPAY_URL,
 };
