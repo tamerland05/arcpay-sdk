@@ -2,9 +2,10 @@ import hashlib
 import hmac
 import json
 import os
-from aiohttp import web, ClientSession
 from datetime import datetime
+
 import aiohttp_cors
+from aiohttp import ClientSession, TCPConnector, web
 
 PRIVATE_KEY = os.getenv("PRIVATE_KEY")
 ARC_KEY = os.getenv("ARC_KEY")
@@ -89,7 +90,7 @@ async def create_order(request):
         "captured": False,
     }
     result = None
-    async with ClientSession() as session:
+    async with ClientSession(connector=TCPConnector(ssl=False)) as session:
         async with session.post(url, json=data, headers=headers) as response:
             if response.status == 200:
                 result = await response.json()
