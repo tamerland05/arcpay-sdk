@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 1080;
 
-app.use(bodyParser.json());
+app.use(express.raw({ type: 'application/json' }));
 
 // Temporary order database
 const shopDatabase = {};
@@ -17,7 +17,7 @@ const shopDatabase = {};
 app.post('/webhook', (req, res) => {
   const privateKey = process.env.PRIVATE_KEY;
   const signature = req.headers['x-signature'];
-  const payload = JSON.stringify(req.body);
+  const payload = req.body.toString();
 
   if (!signature) {
     return res.status(400).json({ error: 'Missing signature header' });
