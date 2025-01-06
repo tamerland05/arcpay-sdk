@@ -107,6 +107,7 @@ export function useArcPay() {
       }
       tonConnectUI.disconnect();
     },
+    connectedWallet: () => userFriendlyAddress,
     onOrderChange: context.onOrderChange,
   };
 }
