@@ -14,7 +14,7 @@ export function useArcPay() {
   const eventSourceRef = useRef<EventSource | null>(null);
   const context = useContext(ArcPayContext);
   const userFriendlyAddress = useTonAddress();
-  const walletAddress = useTonAddress(false);
+  const rawAddress = useTonAddress(false);
   const [tonConnectUI] = useTonConnectUI();
   const { open } = useTonConnectModal();
   const [arcpayStatus, setArcpayStatus] = useState<ArcpayStatus>(
@@ -108,7 +108,7 @@ export function useArcPay() {
       }
       tonConnectUI.disconnect();
     },
-    connectedWallet: () => walletAddress,
+    walletAddress: () => rawAddress,
     onOrderChange: context.onOrderChange,
   };
 }
